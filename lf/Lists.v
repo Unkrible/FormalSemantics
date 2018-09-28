@@ -951,6 +951,17 @@ Qed.
     Coq.  (You may find that the difficulty of the proof depends on
     how you defined [count]!) *)
 (* FILL IN HERE *)
+Theorem bag_count_sum: forall (s1 s2: bag) (n: nat),
+  count n (sum s1 s2) = count n s1 + count n s2.
+Proof.
+  intros s1 s2 n.
+  induction s1 as [| h t IHs1].
+  - simpl. reflexivity.
+  - simpl. remember (beq_nat n h).
+    destruct b as [].
+    + rewrite -> IHs1. reflexivity.
+    + rewrite -> IHs1. reflexivity.
+Qed.
 (** [] *)
 
 (** **** Exercise: 4 stars, advanced (rev_injective)  *)
